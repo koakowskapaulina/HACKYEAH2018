@@ -1,0 +1,11 @@
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\bin\Release\netcoreapp2.0\BE.deps.json
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\bin\Release\netcoreapp2.0\BE.runtimeconfig.json
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\bin\Release\netcoreapp2.0\BE.runtimeconfig.dev.json
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\bin\Release\netcoreapp2.0\BE.dll
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\bin\Release\netcoreapp2.0\BE.pdb
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\obj\Release\netcoreapp2.0\BE.csprojAssemblyReference.cache
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\obj\Release\netcoreapp2.0\BE.csproj.CoreCompileInputs.cache
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\obj\Release\netcoreapp2.0\BE.AssemblyInfoInputs.cache
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\obj\Release\netcoreapp2.0\BE.AssemblyInfo.cs
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\obj\Release\netcoreapp2.0\BE.dll
+C:\Users\Paula\Source\HackYeah18\HACKYEAH2018\BE\BE\obj\Release\netcoreapp2.0\BE.pdb
