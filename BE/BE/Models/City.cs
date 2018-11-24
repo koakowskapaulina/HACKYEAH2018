@@ -13,6 +13,11 @@ namespace BE.Models
         public string Longitude { get; set; }
         public string Latitude { get; set; }
 
+        public City()
+        {
+
+        }
+
         public City(int _CityID, string _CityName, string _Country, string _Latitude, string _Longitude)
         {
             CityID = _CityID;

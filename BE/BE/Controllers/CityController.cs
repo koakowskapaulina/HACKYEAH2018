@@ -19,7 +19,7 @@ namespace BE.Controllers
         [HttpGet]
         public string Get()
         {            
-            return JsonConvert.SerializeObject(mockService.InitCities());
+            return JsonConvert.SerializeObject(mockService.GetCities());
         }
 
         // GET api/values/5

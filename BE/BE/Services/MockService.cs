@@ -11,11 +11,11 @@ namespace BE.Services
         IEnumerable<City> InitCities();
         IEnumerable<User> InitUsers();
         City GetCityById(IEnumerable<City> CitiesList, int id);
+        IEnumerable<City> GetCities();
     }
 
     public class MockService : IMockService
-    {       
-
+    {
         public IEnumerable<City> InitCities()
         {
             var CitiesList = new List<City>();
@@ -64,6 +64,12 @@ namespace BE.Services
             usersList.Add(new User(5, "mwalendzik@hackyeah.pl", "123", "1;2;3,4"));
 
             return usersList;
+        }
+
+        public IEnumerable<City> GetCities()
+        {
+            BazkaContext bazka = new BazkaContext();
+            return bazka.Cities.ToList();
         }
     }
 }
