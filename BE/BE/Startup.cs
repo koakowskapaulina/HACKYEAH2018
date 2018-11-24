@@ -30,6 +30,7 @@ namespace BE
             builder.RegisterType<RaffleService>().As<IRaffleService>();
             builder.RegisterType<MockService>().As<IMockService>();
             builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<BazkaContext>();
             //builder.RegisterType<x>().As<Ix>();
 
             builder.Populate(services);

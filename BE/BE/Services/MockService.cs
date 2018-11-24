@@ -16,6 +16,13 @@ namespace BE.Services
 
     public class MockService : IMockService
     {
+        BazkaContext bazka;
+
+        public MockService(BazkaContext _bazkaContext)
+        {
+            bazka = _bazkaContext;
+        }
+
         public IEnumerable<City> InitCities()
         {
             var CitiesList = new List<City>();
@@ -68,7 +75,7 @@ namespace BE.Services
 
         public IEnumerable<City> GetCities()
         {
-            BazkaContext bazka = new BazkaContext();
+            //BazkaContext bazka = new BazkaContext();
             return bazka.Cities.ToList();
         }
     }
