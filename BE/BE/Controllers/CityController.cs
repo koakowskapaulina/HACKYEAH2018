@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BE.ApiResult;
 using BE.Models;
@@ -26,7 +27,7 @@ namespace BE.Controllers
             {
                 return Json(new ApiResultGeneric<IEnumerable<City>>(mockService.GetCities()));
             }
-            catch
+            catch (Exception ex)
             {
                 return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }
@@ -41,7 +42,7 @@ namespace BE.Controllers
                 var data = mockService.GetCityById(mockService.GetCities(), id);
                 return Json(new ApiResultGeneric<City>(data));
             }
-            catch
+            catch (Exception ex)
             {
                 return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }

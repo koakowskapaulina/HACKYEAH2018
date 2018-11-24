@@ -30,7 +30,7 @@ namespace BE.Controllers
                 var data = raffleService.DoRaffle();
                 return Json(new ApiResultGeneric<IEnumerable<int>>(data));
             }
-            catch
+            catch (Exception ex)
             {
                 return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }

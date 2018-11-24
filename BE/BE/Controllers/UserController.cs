@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using BE.ApiModels;
 using BE.ApiResult;
 using BE.Models;
@@ -45,7 +46,8 @@ namespace BE.Controllers
         {
             try
             {
-                User loggedUser = userService.checkUserCredentials(model);
+                var password = Encoding.UTF8.GetString(Convert.FromBase64String(model.Password));
+                User loggedUser = userService.checkUserCredentials(model.Email, password);
                 if (loggedUser == null)
                 {
                     return Json(ApiResultBase.GetByErrorCode(ErrorCode.InvalidLogin));
@@ -53,7 +55,7 @@ namespace BE.Controllers
 
                 return Json(new ApiResultOk());
             }
-            catch
+            catch (Exception ex)
             {
                 return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }
