@@ -12,6 +12,8 @@ namespace BE
 {
     public class Startup
     {
+        private string connection_string = null;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,11 +24,13 @@ namespace BE
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            connection_string = Configuration["CONNECTION_STRING"];
 
             services.AddMvc();
             services.AddCors();
 
             var builder = new ContainerBuilder();
+            builder.RegisterType<ConnectionStringProvider>().WithParameter(new TypedParameter(typeof(string), connection_string));
             builder.RegisterType<RaffleService>().As<IRaffleService>();
             builder.RegisterType<MockService>().As<IMockService>();
             builder.RegisterType<UserService>().As<IUserService>();
