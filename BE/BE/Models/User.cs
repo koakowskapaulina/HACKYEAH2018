@@ -10,18 +10,16 @@ namespace BE.Models
         public long UserID { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Route { get; set; }
 
         public User()
         {
         }
 
-        public User(long _UserID, string _Email, string _Password, string _Route)
+        public User(long _UserID, string _Email, string _Password)
         {
             UserID = _UserID;
             Email = _Email;
             Password = _Password;
-            Route = _Route;
         }
     }
 }

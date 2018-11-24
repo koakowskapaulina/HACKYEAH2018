@@ -19,6 +19,7 @@ namespace BE
 
         public DbSet<City> Cities { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserGames> UserGames { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
