@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using BE.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BE.Controllers
 {
@@ -12,15 +11,15 @@ namespace BE.Controllers
     [Route("api/User")]
     public class UserController : Controller
     {
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public string Get()
         {
             var mockService = new MockService();
-            var cities = mockService.InitCities();
+            var users = mockService.InitCities();
 
-            var city = cities.Where(x => x.CityID.Equals(id));
+            var usersList = users;
 
-            return city.ToString();
+            return JsonConvert.SerializeObject(usersList);
         }
     }
 }
