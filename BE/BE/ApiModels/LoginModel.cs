@@ -7,7 +7,7 @@ namespace BE.ApiModels
 {
     public class LoginModel
     {
-        string Login { get; set; }
-        string Password { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
