@@ -24,7 +24,7 @@ namespace BE.Controllers
         {
             try
             {
-                return Json(new ApiResultGeneric<IEnumerable<City>>(mockService.InitCities()));
+                return Json(new ApiResultGeneric<IEnumerable<City>>(mockService.GetCities()));
             }
             catch
             {
@@ -38,7 +38,7 @@ namespace BE.Controllers
         {
             try
             {
-                var data = mockService.GetCityById(mockService.InitCities(), id);
+                var data = mockService.GetCityById(mockService.GetCities(), id);
                 return Json(new ApiResultGeneric<City>(data));
             }
             catch
