@@ -12,6 +12,10 @@ namespace BE.Models
         public string Password { get; set; }
         public string Route { get; set; }
 
+        public User()
+        {
+        }
+
         public User(int _UserID, string _Email, string _Password, string _Route)
         {
             UserID = _UserID;
