@@ -6,8 +6,16 @@ using BE.Models;
 
 namespace BE.Services
 {
-    public class MockService
+    public interface IMockService
     {
+        IEnumerable<City> InitCities();
+        IEnumerable<User> InitUsers();
+        City GetCityById(IEnumerable<City> CitiesList, int id);
+    }
+
+    public class MockService : IMockService
+    {       
+
         public IEnumerable<City> InitCities()
         {
             var CitiesList = new List<City>();
@@ -36,6 +44,13 @@ namespace BE.Services
             //CitiesList.Add(new City(, "", "", "", ""));
 
             return CitiesList;
+        }
+
+        public City GetCityById(IEnumerable<City> CitiesList, int id)
+        {             
+            var city = CitiesList.Where(x => x.CityID.Equals(id)).FirstOrDefault();
+
+            return city;
         }
 
         public IEnumerable<User> InitUsers()

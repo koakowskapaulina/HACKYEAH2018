@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace BE.Services
 {
-    public class RaffleService
+    public interface IRaffleService
+    {
+        IEnumerable<int> DoRaffle();
+    }
+
+    public class RaffleService : IRaffleService
     {
         public IEnumerable<int> DoRaffle()
         {

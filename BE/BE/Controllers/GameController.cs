@@ -13,38 +13,43 @@ namespace BE.Controllers
     [Route("chcem/losowanko")]
     public class GameController : Controller
     {
+        IRaffleService raffleService;
+
+        public GameController(IRaffleService _raffleService)
+        {
+            raffleService = _raffleService;
+        }
+
         // GET: api/<controller>
         [HttpGet]
         public string Get()
-        {
-            var raffleService = new RaffleService();          
-
+        {                   
             return JsonConvert.SerializeObject(raffleService.DoRaffle());
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/<controller>/5
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        //// POST api/<controller>
+        //[HttpPost]
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT api/<controller>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<controller>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
