@@ -4,24 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using BE.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BE.Controllers
 {
-    [Route("chcem/api")]
-    public class ValuesController : Controller
+    [Route("chcem/miasta")]
+    public class CityController : Controller
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
             var mockService = new MockService();
             var cities = mockService.InitCities();
 
-            var city = cities.First();
-            string cityString = city.CityID + "." + city.CityName;
-
-            //return new string[] { "bier", "api", "rób","mati uj" };
-            return new string[] { cityString };
+            return JsonConvert.SerializeObject(cities);
         }
 
         // GET api/values/5
@@ -33,7 +30,7 @@ namespace BE.Controllers
 
             var city = cities.Where(x => x.CityID.Equals(id));
 
-            return city.ToString();
+            return JsonConvert.SerializeObject(city);
         }
 
         // POST api/values

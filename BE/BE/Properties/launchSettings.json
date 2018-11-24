@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "chcem/api",
+      "launchUrl": "chcem/miasta",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -19,7 +19,7 @@
     "BE": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "chcem/api",
+      "launchUrl": "chcem/miasta",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
