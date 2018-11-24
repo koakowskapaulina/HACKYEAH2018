@@ -22,13 +22,14 @@ namespace BE
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-                       
+
             services.AddMvc();
             services.AddCors();
 
-            var builder = new ContainerBuilder();                  
+            var builder = new ContainerBuilder();
             builder.RegisterType<RaffleService>().As<IRaffleService>();
             builder.RegisterType<MockService>().As<IMockService>();
+            builder.RegisterType<UserService>().As<IUserService>();
             //builder.RegisterType<x>().As<Ix>();
 
             builder.Populate(services);

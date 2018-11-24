@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE.ApiResult;
 using BE.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -22,9 +23,17 @@ namespace BE.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public string Get()
-        {                   
-            return JsonConvert.SerializeObject(raffleService.DoRaffle());
+        public IActionResult Get()
+        {
+            try
+            {
+                var data = raffleService.DoRaffle();
+                return Json(new ApiResultGeneric<IEnumerable<int>>(data));
+            }
+            catch
+            {
+                return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
+            }
         }
 
         //// GET api/<controller>/5

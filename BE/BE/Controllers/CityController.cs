@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BE.ApiResult;
+using BE.Models;
 using BE.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,34 +20,31 @@ namespace BE.Controllers
 
         // GET api/values
         [HttpGet]
-        public string Get()
-        {            
-            return JsonConvert.SerializeObject(mockService.GetCities());
+        public IActionResult Get()
+        {
+            try
+            {
+                return Json(new ApiResultGeneric<IEnumerable<City>>(mockService.InitCities()));
+            }
+            catch
+            {
+                return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
+            }
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
-        {            
-            return JsonConvert.SerializeObject(mockService.GetCityById(mockService.InitCities(), id));
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                var data = mockService.GetCityById(mockService.InitCities(), id);
+                return Json(new ApiResultGeneric<City>(data));
+            }
+            catch
+            {
+                return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
+            }
         }
-
-        //// POST api/values
-        //[HttpPost]
-        //public void Post([FromBody]string value)
-        //{
-        //}
-
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

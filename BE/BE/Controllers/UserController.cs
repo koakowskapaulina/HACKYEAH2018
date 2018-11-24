@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BE.ApiModels;
 using BE.ApiResult;
@@ -14,15 +15,28 @@ namespace BE.Controllers
     [Route("chcem/userkow")]
     public class UserController : Controller
     {
-        [HttpGet]
-        public string Get()
+        IUserService userService;
+        IMockService mockService;
+
+        public UserController(IUserService _userService, IMockService _mockService)
         {
-            var mockService = new MockService();
-            var users = mockService.InitUsers();
+            userService = _userService;
+            mockService = _mockService;
+        }
 
-            var usersList = users;
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                var users = mockService.InitUsers();
 
-            return JsonConvert.SerializeObject(usersList);
+                return Json(new ApiResultGeneric<IEnumerable<User>>(users));
+            }
+            catch
+            {
+                return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
+            }
         }
 
         [HttpPost]
@@ -31,10 +45,7 @@ namespace BE.Controllers
         {
             try
             {
-                var mockService = new MockService();
-                var users = mockService.InitUsers();
-
-                User loggedUser = users.Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
+                User loggedUser = userService.checkUserCredentials(model);
                 if (loggedUser == null)
                 {
                     return Json(ApiResultBase.GetByErrorCode(ErrorCode.InvalidLogin));
@@ -46,31 +57,6 @@ namespace BE.Controllers
             {
                 return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }
-        }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

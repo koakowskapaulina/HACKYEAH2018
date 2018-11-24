@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BE.ApiResult
 {
-    public class ApiResultGeneric : ApiResultBase
+    public class ApiResultGeneric<T> : ApiResultBase
     {
         /// <summary>
         /// Contains result object when Success = true
         /// </summary>
-        public string Data { get; set; }
+        public T Data { get; set; }
 
 
         public ApiResultGeneric() : base(false)
@@ -19,7 +19,7 @@ namespace BE.ApiResult
 
         }
 
-        public ApiResultGeneric(string data) : base(true)
+        public ApiResultGeneric(T data) : base(true)
         {
             Data = data;
         }
