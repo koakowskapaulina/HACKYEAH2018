@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE.Controllers
@@ -13,14 +14,26 @@ namespace BE.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "bier", "api", "rób","frontendy" };
+            var mockService = new MockService();
+            var cities = mockService.InitCities();
+
+            var city = cities.First();
+            string cityString = city.CityID + "." + city.CityName;
+
+            //return new string[] { "bier", "api", "rób","mati uj" };
+            return new string[] { cityString };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            var mockService = new MockService();
+            var cities = mockService.InitCities();
+
+            var city = cities.Where(x => x.CityID.Equals(id));
+
+            return city.ToString();
         }
 
         // POST api/values
