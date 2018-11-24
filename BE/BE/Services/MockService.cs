@@ -9,7 +9,7 @@ namespace BE.Services
     public interface IMockService
     {
         IEnumerable<City> InitCities();
-        IEnumerable<User> InitUsers();
+        //IEnumerable<User> InitUsers();
         City GetCityById(IEnumerable<City> CitiesList, int id);
         IEnumerable<City> GetCities();
     }
@@ -60,18 +60,18 @@ namespace BE.Services
             return city;
         }
 
-        public IEnumerable<User> InitUsers()
-        {
-            List<User> usersList = new List<User>();
-            usersList.Add(new User(0, "iantoniuk@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2;3"));
-            usersList.Add(new User(1, "apietrowski@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2"));
-            usersList.Add(new User(2, "pkolakowska@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;2"));
-            usersList.Add(new User(3, "mbrzozowska@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;4;2"));
-            usersList.Add(new User(4, "knowak@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;5,2,4"));
-            usersList.Add(new User(5, "mwalendzik@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2;3,4"));
+        //public IEnumerable<User> InitUsers()
+        //{
+        //    List<User> usersList = new List<User>();
+        //    usersList.Add(new User(0, "iantoniuk@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2;3"));
+        //    usersList.Add(new User(1, "apietrowski@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2"));
+        //    usersList.Add(new User(2, "pkolakowska@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;2"));
+        //    usersList.Add(new User(3, "mbrzozowska@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;4;2"));
+        //    usersList.Add(new User(4, "knowak@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;5,2,4"));
+        //    usersList.Add(new User(5, "mwalendzik@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2;3,4"));
 
-            return usersList;
-        }
+        //    return usersList;
+        //}
 
         public IEnumerable<City> GetCities()
         {

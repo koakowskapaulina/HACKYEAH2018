@@ -17,12 +17,10 @@ namespace BE.Controllers
     public class UserController : Controller
     {
         IUserService userService;
-        IMockService mockService;
 
         public UserController(IUserService _userService, IMockService _mockService)
         {
             userService = _userService;
-            mockService = _mockService;
         }
 
         [HttpGet]
@@ -30,11 +28,11 @@ namespace BE.Controllers
         {
             try
             {
-                var users = mockService.InitUsers();
+                var users = userService.GetUsers();
 
                 return Json(new ApiResultGeneric<IEnumerable<User>>(users));
             }
-            catch
+            catch (Exception ex)
             {
                 return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }
@@ -47,7 +45,7 @@ namespace BE.Controllers
             try
             {
                 var password = Encoding.UTF8.GetString(Convert.FromBase64String(model.Password));
-                User loggedUser = userService.checkUserCredentials(model.Email, password);
+                User loggedUser = userService.CheckUserCredentials(model.Email, password);
                 if (loggedUser == null)
                 {
                     return Json(ApiResultBase.GetByErrorCode(ErrorCode.InvalidLogin));

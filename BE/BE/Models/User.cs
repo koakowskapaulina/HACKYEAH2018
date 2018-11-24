@@ -7,7 +7,7 @@ namespace BE.Models
 {
     public class User
     {
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Route { get; set; }
@@ -16,7 +16,7 @@ namespace BE.Models
         {
         }
 
-        public User(int _UserID, string _Email, string _Password, string _Route)
+        public User(long _UserID, string _Email, string _Password, string _Route)
         {
             UserID = _UserID;
             Email = _Email;

@@ -12,30 +12,35 @@ namespace BE.Services
 {
     public interface IUserService
     {
-        User checkUserCredentials(string email, string password);
+        User CheckUserCredentials(string email, string password);
+        IEnumerable<User> GetUsers();
     }
 
     public class UserService : IUserService
     {
-        IMockService mockService;
+        BazkaContext database;
 
-        public UserService(IMockService _mockService)
+        public UserService(BazkaContext _databaseContext)
         {
-            mockService = _mockService;
+            database = _databaseContext;
         }
 
-        public User checkUserCredentials(string email, string password)
+        public User CheckUserCredentials(string email, string password)
         {
             try
             {
-                var users = mockService.InitUsers();
                 string pass = CalculateMD5Hash(password);
-                return users.Where(u => u.Email == email && u.Password == pass).FirstOrDefault();
+                return database.Users.Where(u => u.Email == email && u.Password == pass).FirstOrDefault();
             }
             catch
             {
                 return null;
             }
+        }
+
+        public IEnumerable<User> GetUsers()
+        {
+            return database.Users.ToList();
         }
 
         public string CalculateMD5Hash(string input)
