@@ -14,11 +14,16 @@ namespace BE.Services
 
     public class UserService : IUserService
     {
+        IMockService mockService;
+
+        public UserService(IMockService _mockService)
+        {
+            mockService = _mockService;
+        }
         public User checkUserCredentials(LoginModel model)
         {
             try
             {
-                var mockService = new MockService();
                 var users = mockService.InitUsers();
 
                 return users.Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
