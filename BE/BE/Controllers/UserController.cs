@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BE.ApiModels;
-using BE.Helpers;
+using BE.ApiResult;
+using BE.Models;
 using BE.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -27,22 +26,25 @@ namespace BE.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
-        public void Login(LoginModel model)
+        [Route("logowanko")]
+        public IActionResult Login([FromBody] LoginModel model)
         {
             try
             {
                 var mockService = new MockService();
                 var users = mockService.InitUsers();
 
-                var usersList = users;
+                User loggedUser = users.Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
+                if (loggedUser == null)
+                {
+                    return Json(ApiResultBase.GetByErrorCode(ErrorCode.InvalidLogin));
+                }
 
-                //return JsonConvert.SerializeObject(usersList);
+                return Json(new ApiResultOk());
             }
-            catch (Exception ex)
+            catch
             {
-                LogHelper.Logger.Error(ex);
-                //return null;
+                return Json(ApiResultBase.GetByErrorCode(ErrorCode.InternalServerError));
             }
         }
 
