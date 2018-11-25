@@ -27,7 +27,8 @@ namespace BE.Controllers
         }
 
         // POST api/<controller>
-        [HttpPost("{userId}/{citiesIds}")]
+        [HttpPost]
+        [Route("nowa")]
         public void Post(int userId, string citiesIds)
         {
             userGameService.CreateUserGame(userId, citiesIds);
