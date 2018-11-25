@@ -20,13 +20,16 @@ namespace BE.Services
             return bazka.UserGames.Where(x=>x.UserID.Equals(id)).ToList();
         }
 
-        public void CreateUserGame(int userId, int[] citiesIds)
+        public void CreateUserGame(int userId, string citiesIds)
         {
             var userGame = new UserGames
             {
-
-            }
+                UserID = userId,
+                CreatedDate = DateTime.Now,
+                SelectedRoute = citiesIds,
+            };
             bazka.UserGames.Add(userGame);
+            bazka.SaveChanges();
         }
     }
 }
