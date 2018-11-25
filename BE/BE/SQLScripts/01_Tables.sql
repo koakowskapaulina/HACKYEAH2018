@@ -75,7 +75,7 @@ BEGIN
 		[ID] [bigint] IDENTITY(1,1) NOT NULL,
 		[UserID] [bigint] NOT NULL,
 		[CreatedDate] DATETIME NOT NULL DEFAULT GETUTCDATE(),
-		[SelectedRoutes] [nvarchar](300) NOT NULL
+		[SelectedRoute] [nvarchar](300) NOT NULL
 
 		CONSTRAINT [PK_UserGames] PRIMARY KEY ([ID]),
 		CONSTRAINT [FK_UserGames_User] FOREIGN KEY([UserID]) REFERENCES [dbo].[Users] ([UserID])
