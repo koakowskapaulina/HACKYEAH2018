@@ -19,5 +19,14 @@ namespace BE.Services
         {            
             return bazka.UserGames.Where(x=>x.UserID.Equals(id)).ToList();
         }
+
+        public void CreateUserGame(int userId, int[] citiesIds)
+        {
+            var userGame = new UserGames
+            {
+
+            }
+            bazka.UserGames.Add(userGame);
+        }
     }
 }

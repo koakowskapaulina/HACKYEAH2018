@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,6 +12,13 @@ namespace BE.Controllers
     [Route("chcem/usergierki")]
     public class UserGameController : Controller
     {
+        UserGamesService userGameService;
+
+        public UserGameController(UserGamesService _userGameService)
+        {
+            userGameService = _userGameService;
+        }
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -28,8 +36,9 @@ namespace BE.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post(int userId, int[] citiesIds)
         {
+            userGameService.CreateUserGame(userId, citiesIds);
         }
 
         // PUT api/<controller>/5
