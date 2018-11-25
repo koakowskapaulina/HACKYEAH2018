@@ -55,7 +55,7 @@ namespace BE.Services
                     var userGameRoute = userGame.SelectedRoute.Split(';');
                    
                     int[] compatibilityMatrix = new int[5] { 0, 0, 0, 0, 0 };
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < userGameRoute.Length; i++)
                     {
                         if (userGameRoute[i].Equals(RaffleResultList[i].ToString()))
                         {
