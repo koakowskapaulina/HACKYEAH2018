@@ -15,6 +15,11 @@ namespace BE.Services
             bazka = _bazkaContext;
         }
 
+        public IEnumerable<UserGames> GetUserGames()
+        {
+            return bazka.UserGames.ToList();
+        }
+
         public IEnumerable<UserGames> GetUserGames(long id)
         {            
             return bazka.UserGames.Where(x=>x.UserID.Equals(id)).ToList();

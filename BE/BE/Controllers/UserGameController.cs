@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE.ApiResult;
+using BE.Models;
 using BE.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,18 +15,26 @@ namespace BE.Controllers
     [Route("chcem/usergierki")]
     public class UserGameController : Controller
     {
-        UserGamesService userGameService;
+        UserGamesService userGamesService;
 
-        public UserGameController(UserGamesService _userGameService)
+        public UserGameController(UserGamesService _userGamesService)
         {
-            userGameService = _userGameService;
+            userGamesService = _userGamesService;
         }
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Json(new ApiResultGeneric<IEnumerable<UserGames>>(userGamesService.GetUserGames()));
+        }
+
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public string Get(long id)
+        {
+            
+            return "value";
         }
 
         // POST api/<controller>

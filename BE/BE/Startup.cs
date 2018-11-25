@@ -36,6 +36,7 @@ namespace BE
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<BazkaContext>();
             builder.RegisterType<UserGamesService>();
+            //builder.RegisterType<x>().As<Ix>();
 
             builder.Populate(services);
             var container = builder.Build();

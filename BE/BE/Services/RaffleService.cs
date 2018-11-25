@@ -15,10 +15,12 @@ namespace BE.Services
     public class RaffleService : IRaffleService
     {
         IUserService userService;
+        UserGamesService userGamesService;
 
-        public RaffleService(IUserService _userService)
+        public RaffleService(IUserService _userService, UserGamesService _userGamesService)
         {
             userService = _userService;
+            userGamesService = _userGamesService;
         }
 
         public void DoRaffle()
@@ -46,15 +48,22 @@ namespace BE.Services
             var usersLists = userService.GetUsers();
             foreach(var user in usersLists)
             {
-                //var userGames = ...GetUserGames(user.UserID).toList();
-                //var userGames = new List<UserGames>();
-                //userGames.Add()
+                var userGames = userGamesService.GetUserGames(user.UserID);
 
-                //foreach (var userGame in userGames)
-                //{
-                //    var userGameRoute = userGame.Route.Split(';');
-
-                //}
+                foreach (var userGame in userGames)
+                {
+                    var userGameRoute = userGame.SelectedRoute.Split(';');
+                    
+                    int[] compatibilityMatrix = new int[5] { 0, 0, 0, 0, 0 };
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (userGameRoute[i].Equals(RaffleResultList[i].ToString()))
+                        {
+                            compatibilityMatrix[i] = 1;
+                        }
+                    }
+                    string result = string.Join("", compatibilityMatrix);
+                }
 
             }
 

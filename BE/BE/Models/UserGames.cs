@@ -11,6 +11,7 @@ namespace BE.Models
         public long UserID { get; set; }
         public DateTime CreatedDate { get; set; }
         public string SelectedRoute { get; set; }
+        public int RaffleCompatibilityLength { get; set; }
 
         public UserGames()
         {
