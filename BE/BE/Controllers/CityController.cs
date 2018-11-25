@@ -22,7 +22,7 @@ namespace BE.Controllers
         // GET api/values
         [HttpGet]
         public IActionResult Get()
-        {
+        {                 
             try
             {
                 return Json(new ApiResultGeneric<IEnumerable<City>>(mockService.GetCities()));

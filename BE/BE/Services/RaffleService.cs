@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE.Models;
 
 namespace BE.Services
 {
     public interface IRaffleService
     {
-        IEnumerable<int> DoRaffle();
+        void DoRaffle();
+        void CompareResults(List<int> RaffleResultList);
     }
 
     public class RaffleService : IRaffleService
     {
-        public IEnumerable<int> DoRaffle()
+        IUserService userService;
+
+        public RaffleService(IUserService _userService)
+        {
+            userService = _userService;
+        }
+
+        public void DoRaffle()
         {
             var resultList = new List<int>();
 
@@ -28,8 +37,27 @@ namespace BE.Services
                 resultList.Add(id);
             }
 
-            return resultList;
+            CompareResults(resultList);
+            //return resultList;
         }
 
+        public void CompareResults(List<int> RaffleResultList)
+        {
+            var usersLists = userService.GetUsers();
+            foreach(var user in usersLists)
+            {
+                //var userGames = ...GetUserGames(user.UserID).toList();
+                //var userGames = new List<UserGames>();
+                //userGames.Add()
+
+                //foreach (var userGame in userGames)
+                //{
+                //    var userGameRoute = userGame.Route.Split(';');
+
+                //}
+
+            }
+
+        }
     }
 }
