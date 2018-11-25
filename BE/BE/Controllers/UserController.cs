@@ -51,7 +51,7 @@ namespace BE.Controllers
                     return Json(ApiResultBase.GetByErrorCode(ErrorCode.InvalidLogin));
                 }
 
-                return Json(new ApiResultOk());
+                return Json(new ApiResultGeneric<long>(loggedUser.UserID));
             }
             catch (Exception ex)
             {
