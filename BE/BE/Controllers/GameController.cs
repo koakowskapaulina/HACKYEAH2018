@@ -27,10 +27,10 @@ namespace BE.Controllers
         {
             try
             {
-                raffleService.DoRaffle();
+                //raffleService.DoRaffle();
                 //var data = raffleService.DoRaffle();
                 //return Json(new ApiResultGeneric<IEnumerable<int>>(data));
-                return null;
+                return Json(new ApiResultGeneric<IEnumerable<int>>(raffleService.DoRaffle()));
             }
             catch (Exception ex)
             {
