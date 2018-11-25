@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace BE
 {
@@ -36,11 +35,9 @@ namespace BE
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<BazkaContext>();
             builder.RegisterType<UserGamesService>();
-            //builder.RegisterType<x>().As<Ix>();
 
             builder.Populate(services);
             var container = builder.Build();
-
 
             return new AutofacServiceProvider(container);
 

@@ -19,7 +19,6 @@ namespace BE.Controllers
             mockService = _mockService;
         }
 
-        // GET api/values
         [HttpGet]
         public IActionResult Get()
         {                 
@@ -33,7 +32,6 @@ namespace BE.Controllers
             }
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {

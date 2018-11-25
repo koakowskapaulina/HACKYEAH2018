@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BE.Models;
 
 namespace BE.Services
@@ -9,7 +7,6 @@ namespace BE.Services
     public interface IMockService
     {
         IEnumerable<City> InitCities();
-        //IEnumerable<User> InitUsers();
         City GetCityById(IEnumerable<City> CitiesList, int id);
         IEnumerable<City> GetCities();
     }
@@ -48,8 +45,6 @@ namespace BE.Services
             CitiesList.Add(new City(19, "Panama City", "Panama", "8.983333", "-79.516670"));
             CitiesList.Add(new City(20, "Cape Town", "South Africa", "-33.844166", "18.698610"));
 
-            //CitiesList.Add(new City(, "", "", "", ""));
-
             return CitiesList;
         }
 
@@ -60,22 +55,8 @@ namespace BE.Services
             return city;
         }
 
-        //public IEnumerable<User> InitUsers()
-        //{
-        //    List<User> usersList = new List<User>();
-        //    usersList.Add(new User(0, "iantoniuk@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2;3"));
-        //    usersList.Add(new User(1, "apietrowski@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2"));
-        //    usersList.Add(new User(2, "pkolakowska@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;2"));
-        //    usersList.Add(new User(3, "mbrzozowska@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;4;2"));
-        //    usersList.Add(new User(4, "knowak@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;3;5,2,4"));
-        //    usersList.Add(new User(5, "mwalendzik@hackyeah.pl", "202CB962AC59075B964B07152D234B70", "1;2;3,4"));
-
-        //    return usersList;
-        //}
-
         public IEnumerable<City> GetCities()
         {
-            //BazkaContext bazka = new BazkaContext();
             return bazka.Cities.ToList();
         }
     }

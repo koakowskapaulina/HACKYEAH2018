@@ -15,7 +15,6 @@ namespace BE.Models
 
         public City()
         {
-
         }
 
         public City(int _CityID, string _CityName, string _Country, string _Latitude, string _Longitude)
