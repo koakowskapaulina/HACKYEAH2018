@@ -31,10 +31,9 @@ namespace BE.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(long id)
+        public IActionResult Get(long id)
         {
-            
-            return "value";
+            return Json(new ApiResultGeneric<IEnumerable<UserGames>>(userGamesService.GetUserGames(id)));
         }
 
         // POST api/<controller>
@@ -42,7 +41,7 @@ namespace BE.Controllers
         [Route("nowa")]
         public void Post(int userId, string citiesIds)
         {
-            userGameService.CreateUserGame(userId, citiesIds);
+            userGamesService.CreateUserGame(userId, citiesIds);
         }
 
     }
